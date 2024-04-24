@@ -9,22 +9,23 @@ body {
   background: #bbc6fa;
 }
 
+.container {
+  padding: 0 10px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .quote-box {
   background: #fff;
   width: 100%;
-  max-width: 700px;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  padding: 40px;
+  max-width: 400px;
+  padding: 20px 10px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15);
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -32,88 +33,89 @@ body {
 }
 
 .quote-box h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    position: relative;
+  font-size: 32px;
+  margin-bottom: 40px;
+  position: relative;
 }
 
 .quote-box h2::after {
-    content: "";
-    width: 75px;
-    height: 3px;
-    background: rgb(23, 124, 229);
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
+  content: "";
+  width: 75px;
+  height: 3px;
+  background: rgb(23, 124, 229);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
 }
 
 .quote-box blockquote {
-    font-size: 26px;
-    min-height: 110px;
+  font-size: 26px;
+  min-height: 110px;
 }
 
-.quote-box blockquote::before, .quote-box blockquote::after {
-    content: '"';
+.quote-box blockquote::before,
+.quote-box blockquote::after {
+  content: '"';
 }
 
 .quote-box span {
-    display: block;
-    margin-top: 10px;
-    float: right;
-    position: relative;
+  display: block;
+  margin-top: 10px;
+  float: right;
+  position: relative;
 }
 
 .quote-box span::before {
-    content: '';
-    width: 20px;
-    height: 2px;
-    background: rgb(23, 124, 229);
-    position: absolute;
-    top: 50%;
-    left: -30px;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: rgb(23, 124, 229);
+  position: absolute;
+  top: 50%;
+  left: -30px;
 }
 
 .quote-box div {
-    width: 100%;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .quote-box button {
-    background: rgb(23, 124, 229);
-    color: #fff;
-    border: 1px solid rgb(23, 124, 229);
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
+  background: rgb(23, 124, 229);
+  color: #fff;
+  border: 1px solid rgb(23, 124, 229);
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 .quote-box button img {
-    width: 20px;
-    margin-right: 10px;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .quote-box button:nth-child(2) {
-    background: transparent;
-    color: #333;
+  background: transparent;
+  color: #333;
 }

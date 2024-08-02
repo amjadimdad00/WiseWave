@@ -1,5 +1,5 @@
 const proxyUrl = "https://api.allorigins.win/get?url=";
-const api_url = `${proxyUrl}${encodeURIComponent('https://quotes.rest/qod?category=inspire')}`;
+const api_url = `${proxyUrl}${encodeURIComponent('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 
@@ -10,13 +10,14 @@ async function getQuote(url) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("API response data:", data); // Log the raw data
+    const quoteData = JSON.parse(data.contents); // Parse the contents
 
-    // Update based on actual response structure
-    if (data.contents && data.contents.quotes && data.contents.quotes.length > 0) {
-      const quoteData = data.contents.quotes[0];
-      quoteElement.innerText = quoteData.quote;
-      authorElement.innerText = `— ${quoteData.author}`;
+    console.log("API response data:", quoteData); // Log the data
+
+    // Extract and display the quote and author
+    if (quoteData && quoteData.quoteText && quoteData.quoteAuthor) {
+      quoteElement.innerText = quoteData.quoteText;
+      authorElement.innerText = `— ${quoteData.quoteAuthor}`;
     } else {
       throw new Error('Unexpected data format');
     }

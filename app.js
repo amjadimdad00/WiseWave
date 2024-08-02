@@ -29,6 +29,10 @@ async function getQuote(url) {
   }
 }
 
+function reloadPage() {
+  window.location.reload();
+}
+
 function tweet() {
   const tweetText = encodeURIComponent(`${quoteElement.innerText} ${authorElement.innerText}`);
   window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, 'Tweet Window', 'width=600, height=300');

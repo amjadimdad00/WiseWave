@@ -1,5 +1,6 @@
 const proxyUrl = "https://api.allorigins.win/get?url=";
-const api_url = `${proxyUrl}${encodeURIComponent('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')}`;
+const timestamp = new Date().getTime(); // Unique timestamp
+const api_url = `${proxyUrl}${encodeURIComponent(`https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&timestamp=${timestamp}`)}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 

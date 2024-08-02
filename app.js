@@ -1,5 +1,4 @@
-const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-const api_url = `${proxyUrl}https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en`;
+const api_url = "https://api.quotable.io/random";
 const quote = document.getElementById("quote");
 const author = document.getElementById("author");
 
@@ -8,8 +7,8 @@ async function getQuote(url) {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    quote.innerText = data.quoteText;
-    author.innerText = data.quoteAuthor;
+    quote.innerText = data.content;
+    author.innerText = data.author;
   } catch (error) {
     console.error("Error fetching quote:", error);
     quote.innerText = "Sorry, couldn't fetch a quote.";

@@ -1,4 +1,5 @@
-const api_url = "https://quotes.rest/qod?category=life";
+const proxyUrl = "https://api.allorigins.win/get?url=";
+const api_url = `${proxyUrl}${encodeURIComponent('https://quotes.rest/qod?category=life')}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 
@@ -10,11 +11,12 @@ async function getQuote(url) {
     }
     const data = await response.json();
 
-    // Check if the response data contains the expected fields
-    if (data.contents && data.contents.quotes && data.contents.quotes.length > 0) {
-      const quoteData = data.contents.quotes[0];
-      quoteElement.innerText = quoteData.quote;
-      authorElement.innerText = `— ${quoteData.author}`;
+    // Parse the response data
+    const quoteData = JSON.parse(data.contents);
+    if (quoteData.contents && quoteData.contents.quotes && quoteData.contents.quotes.length > 0) {
+      const quote = quoteData.contents.quotes[0];
+      quoteElement.innerText = quote.quote;
+      authorElement.innerText = `— ${quote.author}`;
     } else {
       throw new Error('Unexpected data format');
     }

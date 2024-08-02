@@ -1,5 +1,5 @@
-const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // CORS proxy
-const api_url = `${proxyUrl}https://zenquotes.io/api/random`;
+const proxyUrl = "https://api.allorigins.win/get?url=";
+const api_url = `${proxyUrl}${encodeURIComponent('https://zenquotes.io/api/random')}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 
@@ -7,9 +7,10 @@ async function getQuote(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
-    quoteElement.innerText = data[0].q; // ZenQuotes returns an array with one object
-    authorElement.innerText = `— ${data[0].a}`; // Author prefixed with an em dash
+    console.log(data.contents); // `contents` is used here instead of `data`
+    const quoteData = JSON.parse(data.contents); // Parse the contents again
+    quoteElement.innerText = quoteData[0].q;
+    authorElement.innerText = `— ${quoteData[0].a}`;
   } catch (error) {
     console.error("Error fetching quote:", error);
     quoteElement.innerText = "Sorry, couldn't fetch a quote.";
@@ -22,5 +23,4 @@ function tweet() {
   window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, 'Tweet Window', 'width=600, height=300');
 }
 
-// Fetch a quote when the page loads
 getQuote(api_url);

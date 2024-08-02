@@ -1,5 +1,5 @@
 const proxyUrl = "https://api.allorigins.win/get?url=";
-const api_url = `${proxyUrl}${encodeURIComponent('https://quotes.rest/qod?category=life')}`;
+const api_url = `${proxyUrl}${encodeURIComponent('https://quotes.rest/qod?category=inspire')}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 

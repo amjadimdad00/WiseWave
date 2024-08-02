@@ -10,13 +10,13 @@ async function getQuote(url) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    console.log("API response data:", data); // Log the raw data
 
-    // Parse the response data
-    const quoteData = JSON.parse(data.contents);
-    if (quoteData.contents && quoteData.contents.quotes && quoteData.contents.quotes.length > 0) {
-      const quote = quoteData.contents.quotes[0];
-      quoteElement.innerText = quote.quote;
-      authorElement.innerText = `— ${quote.author}`;
+    // Update based on actual response structure
+    if (data.contents && data.contents.quotes && data.contents.quotes.length > 0) {
+      const quoteData = data.contents.quotes[0];
+      quoteElement.innerText = quoteData.quote;
+      authorElement.innerText = `— ${quoteData.author}`;
     } else {
       throw new Error('Unexpected data format');
     }

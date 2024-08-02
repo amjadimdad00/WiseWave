@@ -1,19 +1,22 @@
-const proxyUrl = "https://api.allorigins.win/get?url=";
-const api_url = `${proxyUrl}${encodeURIComponent('https://api.quotable.io/random?timestamp=' + new Date().getTime())}`;
+const api_url = "https://api.quotable.io/random";
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 
 async function getQuote(url) {
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
-
-    // data.contents should contain the JSON string of the actual API response
-    const quoteData = JSON.parse(data.contents);
-
-    // Set the quote and author text
-    quoteElement.innerText = quoteData[0].q;
-    authorElement.innerText = `— ${quoteData[0].a}`;
+    
+    // Check if the response data contains the expected fields
+    if (data.content && data.author) {
+      quoteElement.innerText = data.content;
+      authorElement.innerText = `— ${data.author}`;
+    } else {
+      throw new Error('Unexpected data format');
+    }
   } catch (error) {
     console.error("Error fetching quote:", error);
     quoteElement.innerText = "Sorry, couldn't fetch a quote.";

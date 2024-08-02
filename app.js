@@ -3,15 +3,22 @@ const quote = document.getElementById("quote");
 const author = document.getElementById("author");
 
 async function getQuote(url) {
-  const response = await fetch(url);
-  var data = await response.json();
-  console.log(data)
-  quote.innerText = data.content;
-  author.innerText = data.author;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    quote.innerText = data.quoteText;
+    author.innerText = data.quoteAuthor;
+  } catch (error) {
+    console.error("Error fetching quote:", error);
+    quote.innerText = "Sorry, couldn't fetch a quote.";
+    author.innerText = "";
+  }
 }
 
 function tweet() {
-    window.open('https://twitter.com/intent/tweet?text=' + quote.innerHTML + '--- by ' + author.innerHTML, 'Tweet Window', 'width=600, height=300')
+    const tweetText = encodeURIComponent(`${quote.innerText} --- by ${author.innerText}`);
+    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, 'Tweet Window', 'width=600, height=300');
 }
 
 getQuote(api_url);

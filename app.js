@@ -7,8 +7,7 @@ async function getQuote(url) {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.contents); // `contents` is used here instead of `data`
-    const quoteData = JSON.parse(data.contents); // Parse the contents again
+    const quoteData = JSON.parse(data.contents);
     quoteElement.innerText = quoteData[0].q;
     authorElement.innerText = `— ${quoteData[0].a}`;
   } catch (error) {

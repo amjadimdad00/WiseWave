@@ -1,5 +1,5 @@
 const proxyUrl = "https://api.allorigins.win/get?url=";
-const api_url = `${proxyUrl}${encodeURIComponent('https://zenquotes.io/api/random?timestamp=' + new Date().getTime())}`;
+const api_url = `${proxyUrl}${encodeURIComponent('https://api.quotable.io/random?timestamp=' + new Date().getTime())}`;
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 

@@ -1,4 +1,5 @@
-const api_url = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+const api_url = `${proxyUrl}https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en`;
 const quote = document.getElementById("quote");
 const author = document.getElementById("author");
 
